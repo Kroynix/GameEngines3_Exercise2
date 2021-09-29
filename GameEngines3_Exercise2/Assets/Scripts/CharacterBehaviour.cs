@@ -21,7 +21,7 @@ public class CharacterBehaviour : MonoBehaviour
     
 
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -45,13 +45,14 @@ public class CharacterBehaviour : MonoBehaviour
             Flip();
         }
 
-    }
-
-    void FixedUpdate()
-    {
         //Check for Ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f,groundMask);
 
+    }
+
+    //Physics Handling
+    void FixedUpdate()
+    {
         //Move
         rb.velocity = new Vector2(Direction * moveSpeed, rb.velocity.y);
 
